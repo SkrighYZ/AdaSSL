@@ -66,7 +66,7 @@ class LatentSampler(nn.Module):
         prior = self.prior_net(x)
         posterior = self.latent_predictor(torch.cat([x, y], dim=1))
 
-        # Split posterior into mu and logvar
+        # Split into mu and variance logits
         q_mu = posterior[:, :self.latent_dim]
         q_preact = posterior[:, self.latent_dim:]
         p_mu = prior[:, :self.latent_dim]
